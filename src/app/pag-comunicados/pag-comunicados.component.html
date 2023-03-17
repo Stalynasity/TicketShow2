@@ -1,0 +1,127 @@
+<div class="album">
+<div class="container">
+<div id="carouselExampleInterval" class="carousel slide " data-bs-ride="carousel">
+  <div class="carousel-inner">
+    <div class="carousel-item active" data-bs-interval="2500">
+      <img src="https://i.imgur.com/SQN8A0H.jpg" class="d-block w-100" alt="Thumbnail [100%x225]">
+    </div>
+    <div class="carousel-item" data-bs-interval="3000">
+      <img src="https://i.imgur.com/ptldFcz.jpg" class="d-block w-100" alt="Thumbnail [100%x225]">
+    </div>
+    <div class="carousel-item" data-bs-interval="3500">
+      <img src="https://i.imgur.com/ftiYfMu.png" class="d-block w-100" alt="Thumbnail [100%x225]">
+    </div>
+  </div>
+  <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleInterval" data-bs-slide="prev">
+    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+    <span class="visually-hidden">Previous</span>
+  </button>
+  <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleInterval" data-bs-slide="next">
+    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+    <span class="visually-hidden">Next</span>
+  </button>
+</div>
+</div>
+</div>
+
+
+
+<div class="album">
+  <div class="container"> 
+
+  <div class="noticia">
+
+    <h1 class=" border-bottom pb-2"> Noticias </h1>
+
+
+
+
+
+    <div class="album  bg-light">
+      <div class="container">
+        
+              <div class="card mb-4 box-shadow" *ngFor="let NoticiaAll of noticiaAll" >
+                <img class="card-img-top" alt="Thumbnail [100%x225]"  src="{{NoticiaAll.imagen}}" data-holder-rendered="true"/>
+                  <div class="card-text">
+                      <h2 class="card-title">
+                          {{NoticiaAll.NombrePublic}}
+                      </h2>
+                      <p class="card-text">
+                        {{NoticiaAll.ComenPublic}}
+                      </p>
+                      <p class="entr card-text ">
+                          Entradas: {{NoticiaAll.Entradas}}
+                      </p>
+                      <div class="favorit">
+                      <a mat-fab extended routerLink="." class="float-right" >
+                        <mat-icon >favorite</mat-icon>
+                        Favorito
+                      </a>
+                    </div>
+                </div>
+              </div>  
+      </div>
+  </div>
+</div>
+</div>
+</div>
+  <br>  
+
+
+  <div class="container">
+
+  <div class="ComentarioPagina">
+  <h2 class=" border-bottom pb-2">Experiencias de usuarios  </h2> </div>
+
+  <div class="cuadroComent">
+
+    <table mat-table [dataSource]="dataSource" class="mat-elevation-z8 demo-table">
+
+      <ng-container matColumnDef="mensaje">
+          <td mat-cell *matCellDef="let element" class="d-flex text-muted pt-3" style=" flex-direction: column; padding-bottom: 12px; padding: 1rem 5rem 1rem 5rem;"> 
+            <svg class="bd-placeholder-img flex-shrink-0 me-2 rounded" width="32" height="32" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder: 32x32" preserveAspectRatio="xMidYMid slice" focusable="false"><title>Placeholder</title><rect width="100%" height="100%" fill="#007bff"/><text x="50%" y="50%" fill="#007bff" dy=".3em">32x32</text></svg>
+            
+            <div>
+            <div class="d-block text-gray-dark" > <strong>@usuario</strong> <br>
+
+                  <div  class="pb-3 mb-0 small lh-sm "> 
+                    {{element.mensaje}}
+                  </div>
+
+                  <div class="d-flex " style="float:right;">
+                  <button type="button" class="btn btn-danger float-end" (click)="EliminarComentario(element)" >Eliminar</button>
+                  </div>
+
+            </div>
+          </div>
+          </td>
+      </ng-container> 
+      
+      <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+      
+      </table>
+    
+  </div>
+    
+  <mat-card>    
+    
+    <form [formGroup]="usuarioNuevo">
+      <div class="form-group col-mb-1 ">
+        
+        <mat-form-field class="d-flex justify-content-between align-items-center">
+            <input matInput placeholder="Dinos tus experiencias" formControlName="mensaje">
+          </mat-form-field>
+      </div>
+    </form>
+    <button mat-raised-button [disabled] = "!usuarioNuevo.valid" (click)="onSubmit()">Comentar</button> 
+</mat-card>
+<br>
+<br>
+<br>
+</div>
+
+  
+
+
+
+

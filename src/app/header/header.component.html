@@ -1,0 +1,41 @@
+<header class="nsd fixed-top">
+  <div class="container">
+    <div class="d-flex flex-wrap navbar align-items-center justify-content-around ">
+      <a class="navbar-brand me-5">
+        <img src="https://www.ticketshow.com.ec/rps/img/logo.png" width="100%" alt="" loading="lazy"
+          (click)="reHome()" />
+      </a>
+      <a href="/" class="d-flex align-items-center mb-2 mb-lg-0 text-white text-decoration-none">
+        <svg class="bi me-2" width="40" height="32" role="img" aria-label="Bootstrap">
+          <use xlink:href="#bootstrap" />
+        </svg>
+      </a>
+
+      <ul class="nav col-12 col-lg-auto me-lg-auto mb-2 justify-content-center mb-md-0">
+        <li><a routerLink="home" class="nav-link px-2 text-white" (click)="reHome()">Inicio</a></li>
+        <li><a routerLink="evento" class="nav-link px-2 text-white" (click)="reEvento()">Eventos</a></li>
+        <li><a routerLink="comunicado" class="nav-link px-2 text-white" (click)="reComunicado()">Comunicados</a></li>
+        <li><a routerLink="servicios" class="nav-link px-2 text-white" (click)="reServicio()">Servicios</a></li>
+        <li><a routerLink="cotizacion" class="nav-link px-2 text-white" (click)="reCotizacion()">Cotizacion</a></li>
+      </ul>
+
+      <form class="col-12 col-lg-auto mb-3 mb-lg-0 me-lg-3" role="search">
+        <input type="search" class="form-control form-control-dark text-bg-dark" placeholder="Search..."
+          aria-label="Search">
+      </form>
+
+      <div class="text-end">
+        <button *ngIf="!authService.isAuthenticated()" type="button" class="btn btn-outline-light me-2" routerLink="login">Inicio de sesión</button>
+        <ul *ngIf="authService.isAuthenticated()" class="nav col-12 col-lg-auto me-lg-auto mb-2 justify-content-center mb-md-0">
+          <li>
+            <p>Bienvenido, {{ email }}</p>
+          </li>
+        </ul>
+        <button *ngIf="authService.isAuthenticated()" type="button" class="btn btn-outline-light me-2" routerLink="home" (click)="reCerrarSesion()">Cerrar sesion</button>
+        
+        <a *ngIf="!authService.isAuthenticated()" routerLink="/registro" class="btn btn-primary">Registrar</a>
+        <!-- <button type="button" class="btn btn-warning">Sign-up</button> -->
+      </div>
+    </div>
+  </div>
+</header>

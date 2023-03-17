@@ -1,0 +1,151 @@
+<div class="body">
+
+    <mat-stepper [linear]="false
+    " labelPosition="bottom" class="example-stepper"
+        [orientation]="(stepperOrientation | async)!">
+       
+        <mat-step [stepControl]="secondFormGroup" label="Informacion de Facturación">
+
+            <form class="content" [formGroup]="secondFormGroup">
+
+                <div class="flex-column">
+
+                    <mat-form-field class="large-field" appearance="fill">
+                        <mat-label>Evento</mat-label>
+                        <input matInput readonly *ngFor="let evento of datoGuardado" value={{evento.titulo}}>
+                    </mat-form-field>
+                    <mat-form-field class="large-field2" appearance="fill">
+                        <mat-label>Precio</mat-label>
+                        <input matInput readonly *ngFor="let evento of datoGuardado" value={{evento.precio}}>
+                    </mat-form-field>
+
+                    <mat-slider
+                        class="example-margin" showTickMarks discrete [displayWith]="formatLabel"
+                        [disabled]="disabled"
+                        [max]="max"
+                        [min]="min"
+                        [step]="step"
+                        (input)="onInputChange($event)"
+                        >
+                        <input matSliderThumb>
+                    </mat-slider>
+                    <mat-label>Precio total: {{precioTotal}} $</mat-label>
+                    <mat-divider></mat-divider>
+                    <mat-form-field class="large-field" appearance="outline">
+                        <mat-label>Nombres</mat-label>
+                        <input matInput formControlName="nombres" placeholder="Damian Diaz" type="text" required>
+                    </mat-form-field>
+
+                    <mat-form-field class="large-field" appearance="outline">
+                        <mat-label>Cedula/Pasaporte</mat-label>
+                        <input matInput formControlName="cedula" type="number" placeholder="0123456789">
+                    </mat-form-field>
+
+                    <mat-form-field class="large-field" appearance="outline">
+                        <mat-label>Correo Electronico</mat-label>
+                        <input matInput formControlName="correo" placeholder="damiándiaz@example.com" type="email"
+                            required>
+                    </mat-form-field>
+
+                    <mat-form-field class="large-field" appearance="outline">
+                        <mat-label>País</mat-label>
+                        <input matInput formControlName="pais" placeholder="Ecuador" type="text" required>
+                    </mat-form-field>
+                    <div>
+                        <button mat-button matStepperNext [disabled]="secondFormGroup.invalid">Siguiente</button>
+                    </div>
+                </div>
+
+            </form>
+        </mat-step>
+
+
+        <mat-step [stepControl]="thirdFormGroup" label="Informacion de Pago">
+            <form [formGroup]="thirdFormGroup">
+                <mat-tab-group>
+                    <mat-tab>
+                        <ng-template mat-tab-label>
+                            Tarjeta de credito/débito
+                            <mat-icon>credit_card</mat-icon>
+                        </ng-template>
+                        
+                        <mat-form-field class="large-field" appearance="outline">
+                            <mat-label>Número de tarjeta</mat-label>
+                            <input matInput formControlName="tarjeta" type="number" required>
+                        </mat-form-field>
+                        <div class="flex-row">
+                            <mat-form-field appearance="fill">
+                                <mat-label>Mes</mat-label>
+                                <mat-select required>
+                                    <mat-option *ngFor="let mes of meses" [value]="mes.value" required>
+                                        {{mes.viewValue}}
+                                    </mat-option>
+                                </mat-select>
+                            </mat-form-field>
+
+                            <mat-form-field appearance="fill">
+                                <mat-label>Año</mat-label>
+                                <mat-select required>
+                                    <mat-option *ngFor="let anio of anios " [value]="anio.value" required>
+                                        {{anio.value}}
+                                    </mat-option>
+                                </mat-select>
+                            </mat-form-field>
+                        </div>
+
+
+                        <mat-form-field appearance="outline">
+                            <mat-label class="large-field">cvv</mat-label>
+                            <input matInput formControlName="thirdCtrl" type="number" required>
+                        </mat-form-field>
+
+
+                    </mat-tab>
+                    <mat-tab>
+                        <ng-template mat-tab-label>
+                            Paypal
+                            <mat-icon>account_balance_wallet</mat-icon>
+                        </ng-template>
+                        <mat-form-field class="large-field" appearance="outline">
+                            <mat-label>Correo Electronico de Paypal</mat-label>
+                            <input matInput formControlName="thirdCtrl" placeholder="damiándiaz@example.com"
+                                type="email" required>
+                        </mat-form-field>
+                    </mat-tab>
+                </mat-tab-group>
+
+                <div>
+                    <button mat-button matStepperPrevious>Atras</button>
+                    <button mat-button matStepperNext [disabled]="!thirdFormGroup.valid">Comprar</button>
+                </div>
+            </form>
+        </mat-step>
+        <mat-step>
+            <ng-template matStepLabel>Ticket!</ng-template>
+
+            <div class="content">
+            <mat-card class="example-card">
+
+                <mat-card-content>
+                    <div class="image-center">
+                        <img src="https://www.ticketshow.com.ec/rps/img/logo.png"  alt="" loading="lazy" />
+                    </div>
+
+                    <div class="flex-row1" *ngFor="let evento of datoGuardado">
+                        <mat-label>{{evento.titulo}}</mat-label>
+                        <mat-label>{{evento.descripcion}}</mat-label>   
+                    </div>
+                <div class="image-card">
+                    
+                </div>
+                </mat-card-content>
+
+            </mat-card>
+        </div>
+            <div>
+                <button mat-button matStepperPrevious>Atras</button>
+            </div>
+        </mat-step>
+    </mat-stepper>
+</div>
+

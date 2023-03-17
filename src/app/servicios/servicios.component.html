@@ -1,0 +1,59 @@
+<body>
+  <div id="portada">
+  <section class="py-5 text-center container">
+    <div class="row py-lg-5">
+      <div class="col-lg-6 col-md-8 mx-auto">
+        <h1 class="fw-light">TICKETSHOW 2.0</h1>
+      </div>
+    </div>
+  </section>
+</div>
+<form [formGroup]="servicioss" (ngSubmit)="onSubmit()">
+  <div class="flex-container">
+    <div>
+      <h2>Servicios</h2>
+      <mat-radio-group aria-labelledby="example-radio-group-label" class="example-radio-group"
+        formControlName="nombre">
+        <mat-radio-button class="example-radio-button" *ngFor="let nombre of nombre" [value]="nombre">
+          {{nombre}}
+        </mat-radio-button>
+
+      </mat-radio-group>
+    </div>
+    <div>
+      <h2>Información complementaria</h2>
+      <mat-form-field class="form" appearance="fill">
+        <mat-label>Tipo de evento</mat-label>
+        <mat-select formControlName="tipo_evento">
+          <mat-option *ngFor="let tipo_evento of tipo_evento" [value]="tipo_evento">{{tipo_evento}}</mat-option>
+        </mat-select>
+
+      </mat-form-field>
+      <mat-form-field class="form" appearance="fill">
+        <mat-label>Nombre de organizador</mat-label>
+        <input matInput formControlName="nombre_organizador">
+
+      </mat-form-field>
+      <mat-form-field class="form" appearance="fill">
+        <mat-label>Email</mat-label>
+        <input matInput formControlName="email">
+
+      </mat-form-field>
+      <mat-form-field class="form" appearance="fill">
+        <mat-label>Lugar Tentativo</mat-label>
+        <input matInput formControlName="pos_lugar">
+
+      </mat-form-field>
+      <mat-form-field class="form" appearance="fill">
+        <mat-label>Ciudad</mat-label>
+        <input matInput formControlName="id_ciudad">
+
+      </mat-form-field>
+
+      <button type="submit" mat-raised-button color="primary" [disabled]="servicioss.invalid">Cotizar</button>
+    </div>
+
+  </div>
+
+</form>
+</body>

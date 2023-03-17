@@ -1,0 +1,91 @@
+<div class="ventana">
+    
+<div class="body" >
+    <div class="container" >
+        
+    <form (ngSubmit)="onSubmit()" [formGroup]="contactForm">
+        <h1>REGISTRO DE USUARIO</h1>
+        <div class="row">
+        <div class="ancho">
+        <label for="cedula" class="form-label">Cedula</label>
+        <input type="number" class="form-control" id="cedula" name="cedula" required formControlName="cedula">
+        <div *ngIf="contactForm.get('cedula')?.touched && contactForm.get('cedula')?.errors?.['required']"
+        class="alert alert-danger">Es obligatorio</div>
+        <div *ngIf="contactForm.get('cedula')?.touched && contactForm.get('cedula')?.errors?.['minlength']"
+        class="alert alert-danger">Dijite los 10 numero de la cedula
+        </div>
+        </div>
+        
+        <div class="ancho">
+        <label for="nombre" class="form-label">Nombre</label>
+        <input type="text" class="form-control" id="nombre" name="nombre" required formControlName="nombre">
+        <div *ngIf="contactForm.get('nombre')?.touched && contactForm.get('nombre')?.errors?.['required']"
+        class="alert alert-danger">Es obligatorio</div>
+        </div>
+        
+        <div class="ancho">
+        <label for="apellido" class="form-label">Apellido</label>
+        <input type="text" class="form-control" id="apellido" name="apellido" required formControlName="apellido">
+        <div *ngIf="contactForm.get('apellido')?.touched && contactForm.get('apellido')?.errors?.['required']"
+        class="alert alert-danger">Es obligatorio</div>
+        </div>
+        
+        <div class="ancho">
+        <label for="direccion" class="form-label">Direccion</label>
+        <input type="text" class="form-control" id="direccion" name="direccion" required formControlName="direccion">
+        <div *ngIf="contactForm.get('direccion')?.touched && contactForm.get('direccion')?.errors?.['required']"
+        class="alert alert-danger">Es obligatorio</div>
+        </div>
+        
+        <!-- <div class="ancho">
+            <label class="form-label">Ciudad</label>
+                    <mat-select class="form-control" id="ciudad" name="ciudad" required formControlName="ciudad">
+                        <mat-option [value]="roles" *ngFor="let roles of ciudad">{{roles}}
+                        </mat-option>
+                    </mat-select>
+                    <div *ngIf="contactForm.get('ciudad')?.touched && contactForm.get('ciudad')?.errors?.['required']"
+        class="alert alert-danger">Es obligatorio</div>
+        </div> -->
+
+        <div class="ancho">
+            <label for="telefono" class="form-label">Telefono</label>
+            <input type="number" class="form-control" id="telefono" name="telefono" required formControlName="telefono">
+            <div *ngIf="contactForm.get('telefono')?.touched && contactForm.get('telefono')?.errors?.['required']"
+            class="alert alert-danger">Es obligatorio</div>
+            <div *ngIf="contactForm.get('telefono')?.touched && contactForm.get('telefono')?.errors?.['minlength']"
+            class="alert alert-danger">Dijite los 10 numeros
+            </div>
+            </div>
+
+            <div class="ancho">
+                <label for="fecha_nacimiento" class="form-label">Fecha de nacimiento</label>
+                <input type="date" class="form-control" id="fecha_nacimiento" name="fecha_nacimiento" required formControlName="fecha_nacimiento">
+                <div *ngIf="contactForm.get('fecha_nacimiento')?.touched && contactForm.get('fecha_nacimiento')?.errors?.['required']"
+                class="alert alert-danger">Es obligatorio</div>
+                </div>
+        </div>
+            <div class="mb-4" style="padding-top: 20px;">
+                <label for="email" class="form-label">Email</label>
+                <input type="text" class="form-control" id="email" name="email" required formControlName="email">
+                <div *ngIf="contactForm.get('email')?.touched && contactForm.get('email')?.errors?.['required']"
+                class="alert alert-danger">Es obligatorio</div>
+                <div *ngIf="contactForm.get('email')?.touched && contactForm.get('email')?.errors?.['email']"
+                class="alert alert-danger">Tiene que ser un correo valido
+            </div>
+        </div>
+
+        <div class="mb-4">
+            <label for="password" class="form-label">Contraseña</label>
+            <input type="text" class="form-control" id="password" name="password" required formControlName="password">
+            <div *ngIf="contactForm.get('password')?.touched && contactForm.get('password')?.errors?.['required']"
+            class="alert alert-danger">Es obligatorio</div>
+            <div *ngIf="contactForm.get('password')?.touched && contactForm.get('password')?.errors?.['minlength']"
+                class="alert alert-danger">Minimo 6 caracter
+            </div>
+        </div>
+              <button type="submit" class="btn btn-primary" [disabled]="contactForm.invalid">Crear</button>
+              <a routerLink="/login" class="btn btn-link">Cancelar</a>
+    </form>
+</div>
+</div>
+</div>

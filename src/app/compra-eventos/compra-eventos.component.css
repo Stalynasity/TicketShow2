@@ -1,0 +1,101 @@
+.body {
+  display: flex;
+  margin-top: 130px ;
+  margin-bottom: 100px ;
+  align-items: center;
+  justify-content: center;
+  background-color: #f5f5f5;
+  height: 110%;
+}
+
+
+.example-stepper{
+  margin-bottom: 50px;
+  margin-top: 50px;
+}
+
+
+
+.mat-stepper-horizontal {
+  margin-top: 8px;
+  width: 100%;
+  margin-left: 8px;
+  margin-right: 8px;
+}
+
+
+
+.mat-mdc-form-field {
+  margin-top: 16px;
+ 
+}
+
+
+
+.flex-column {
+  display: flex;
+  flex-direction: column;
+
+  width: 450px;
+}
+
+button {
+  margin: 30px;
+}
+
+.content {
+  display: flex;
+  justify-content: center;
+}
+
+.flex-row {
+  display: flex;
+}
+
+.flex-row1 {
+  display: flex;
+  justify-content: space-around;
+  color: aliceblue;
+  margin: 30px;
+}
+
+.large-field {
+  width: 430px;
+}
+
+.large-field2 {
+  width: 430px;
+  display: flex
+}
+
+flex-row mat-form-field {
+  width: 300px;
+}
+
+.example-card {
+  width: 600px;
+  background-color: rgb(236, 156, 247);
+}
+
+.image-center{
+ 
+  display: flex;
+  justify-content: center;
+}
+
+
+mat-icon{
+  margin: 5px;;
+}
+
+.image-card{
+  background-image: url(./imagen/codigo_barra.jpg);
+  width: 100%;
+  height: 70px;
+}
+
+.example-margin {
+  margin: 8px;
+}
+
+
